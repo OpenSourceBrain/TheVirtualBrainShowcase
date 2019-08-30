@@ -25,6 +25,7 @@ def get_2_region_conn(weight_between=0):
 
 
 def get_1_region_conn():
+    conn = connectivity.Connectivity()
     conn.region_labels = numpy.array(['R0'])
     conn.weights = numpy.array([[0]])
     conn.centres = numpy.array([[0,0,0]])
@@ -44,11 +45,11 @@ def conn_info(conn):
     
 def data_info(data):
     print('=================== Data info =======================')
-    print('Data %s, %s, %s: %s -> %s'%(type(data), data.shape, len(data), data[0],data[-1]))
+    print('Data %s, shape: %s, %s: %s -> %s'%(type(data), data.shape, len(data), data[0],data[-1]))
     print('=====================================================')
     
 
-def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0):
+def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0, initial_conditions=None):
 
     #heunstochint = integrators.HeunStochastic()
     integ = integrators.HeunDeterministic(dt=dt)
@@ -58,6 +59,7 @@ def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0):
         connectivity = connectivity,
         coupling = coupling.Linear(a=coupling_linear), 
         integrator = integ, 
+        initial_conditions = initial_conditions,
         monitors = monitors.Raw(),
         simulation_length=duration,
     ).configure()

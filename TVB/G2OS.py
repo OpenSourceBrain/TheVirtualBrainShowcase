@@ -9,12 +9,19 @@ model = models.Generic2dOscillator()
 #oscillator.tau = 1
 
 model.configure()
+print(dir(model))
+print(model.state_variables)
+print(model.trait)
 
 
 conn = get_2_region_conn(weight_between=1)
+conn = get_1_region_conn()
 
+initial_conditions = numpy.array([[[[1.5]],[[.4]]]])
+initial_conditions = numpy.array([[[[0]],[[0]]]])
+data_info(initial_conditions)
 
-run_model(model, conn, 200, coupling_linear=0.01)
+run_model(model, conn, 1000, coupling_linear=0.0, initial_conditions=initial_conditions)
 
 plt.show()
 

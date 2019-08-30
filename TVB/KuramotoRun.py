@@ -6,7 +6,7 @@ from utils import *
 
 
 model = models.Kuramoto()
-model.omega = 10
+model.omega = 1
 model.configure()
 
 print('Model info: %s'%model)
@@ -19,7 +19,9 @@ print(model.variables_of_interest)
 
 conn = get_2_region_conn(weight_between=0)
 
+initial_conditions = numpy.array([[[[5],[10]]]])
+data_info(initial_conditions)
 
-run_model(model, conn, 200, coupling_linear=0.01)
+run_model(model, conn, 100, coupling_linear=0.01, initial_conditions =initial_conditions )
 
 plt.show()
