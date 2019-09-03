@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
+         id="net">
+    
+    <include href="g2do.lems.xml"/>
+
+
+    <pulseGeneratorDL id="pg0" delay="1500ms" duration="20ms" amplitude="1" />
+
+    <g2do id="g2do1" tau="1.0" I=".0" a="-2" b="-10.0" c="0.0" d="0.02" e="3.0" f="1.0" g="0.0" alpha="1.0" beta="1.0" gamma="1.0"/>
+    
+    <g2do id="g2do2" tau="100" I="1.0" a="1" b="1" c="0.0" d="1" e="0" f="0" g="0.0" alpha="-2" beta="1.0" gamma="0"/>
+
+
+    <network id="net1">
+        <population id="Pop1" component="g2do1" size="1" />
+        <!-- <population id="Pop2" component="g2do2" size="1" />-->
+        <explicitInput target="Pop1[0]" input="pg0" destination="synapses"/>
+    </network>
+    
+</neuroml>
