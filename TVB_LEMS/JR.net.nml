@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
+         id="net">
+    
+    <include href="jansenrit.lems.xml" />
+
+    <pulseGeneratorDL id="pg0" delay="200ms" duration="500ms" amplitude="2" />
+
+    <jansenrit id="jansenrit1" A="3.25" B="22.0" a="0.1" b="0.05" v0="5.52" nu_max="0.0025" r="0.56" J="135.0" a_1="1.0" a_2="0.8" a_3="0.25" a_4="0.25" mu="0.22"/>
+
+
+    <network id="net1">
+        <population id="Pop1" component="jansenrit1" size="1" />
+        <!--<explicitInput target="Pop1[0]" input="pg0" destination="synapses"/>-->
+    </network>
+    
+</neuroml>

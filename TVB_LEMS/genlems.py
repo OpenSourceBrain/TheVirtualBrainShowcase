@@ -60,7 +60,7 @@ def build_lems_for_model(src):
         mass.dynamics.add(lems.DerivedVariable(key, value=val))
 
     for key in src.obsrv:
-        name_dv = key.replace('(','_').replace(')','')
+        name_dv = key.replace('(','_').replace(')','').replace(' - ','_min_')
         mass.dynamics.add(lems.DerivedVariable(name_dv, value=key, exposure=name_dv))
         mass.add(lems.Exposure(name_dv, 'none'))
 

@@ -19,7 +19,7 @@
     <Constant dimension="time" name="MSEC" value="1ms"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
     <Exposure dimension="none" name="lrc"/>
-    <Exposure dimension="none" name="y0 - y1"/>
+    <Exposure dimension="none" name="y0_min_y1"/>
     <Exposure dimension="none" name="y1"/>
     <Exposure dimension="none" name="y0"/>
     <Exposure dimension="none" name="y3"/>
@@ -37,7 +37,7 @@
       <DerivedVariable name="sigm_y0_1" value="2 * nu_max / (1 + exp(r * (v0 - (a_1 * J * y0))))"/>
       <DerivedVariable dimension="none" exposure="lrc" name="lrc" reduce="add" select="synapses[*]/I"/>
       <DerivedVariable name="sigm_y1_y2" value="2 * nu_max / (1 + exp(r * (v0 - (y1 - y2))))"/>
-      <DerivedVariable exposure="y0 - y1" name="y0 - y1" value="y0 - y1"/>
+      <DerivedVariable exposure="y0_min_y1" name="y0_min_y1" value="y0 - y1"/>
       <DerivedVariable name="sigm_y0_3" value="2 * nu_max / (1 + exp(r * (v0 - (a_3 * J * y0))))"/>
       <TimeDerivative value="(y4)/MSEC" variable="y1"/>
       <TimeDerivative value="(y3)/MSEC" variable="y0"/>
