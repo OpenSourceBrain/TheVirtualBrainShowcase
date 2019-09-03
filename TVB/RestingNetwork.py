@@ -11,12 +11,23 @@ from matplotlib import pyplot as plt
 model=models.Generic2dOscillator(a=0.0)
 
 def run_sim(conn, cs, D, cv=3.0, dt=0.5, simlen=1e3):
+    
+    integrator = integrators.HeunStochastic(dt=dt, noise=noise.Additive(nsig=numpy.array([D])))
+    integrator = integrators.HeunDeterministic(dt=dt)
+    
+    
+    initial_conditions = get_initial_conditions( [0,0] , len(conn.region_labels))
+    
+    #monitors=monitors.TemporalAverage(period=5.0) # 200 Hz
+    #monitors=monitors.Raw()
+    
     sim = simulator.Simulator(
         model=model,
         connectivity=conn,
         coupling=coupling.Linear(a=cs),
-        integrator=integrators.HeunStochastic(dt=dt, noise=noise.Additive(nsig=numpy.array([D]))),
-        monitors=monitors.TemporalAverage(period=5.0) # 200 Hz
+        integrator=integrator,
+        initial_conditions=initial_conditions,
+        monitors=monitors.Raw()
     )
     sim.configure()
     print("Starting simulation of duration %sms (dt=%sms)"%(simlen,dt))

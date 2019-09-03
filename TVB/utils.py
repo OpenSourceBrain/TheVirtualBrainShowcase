@@ -64,9 +64,17 @@ def get_initial_conditions(vals, size=1):
     #initial_conditions = numpy.array([[  [[0]]   ,[[0]],[[0]],[[0]],[[0]],[[0]]]])
     ic = []
     for i in vals:
-        ic.append([[i]*size])
+        ic.append([[i]]*size)
     iic = numpy.array([ic])
     return iic
+    
+def export_neuroml2(model, conn):
+    
+    from neuroml import (NeuroMLDocument, Network, Population, ContinuousConnectionInstanceW, ContinuousProjection,
+                     ExplicitInput, SineGeneratorDL, SineGenerator, Property, Location, Instance, IncludeType)
+                     
+    nml_doc = NeuroMLDocument(id='TVB')
+    
     
 
 def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0, initial_conditions=None):
