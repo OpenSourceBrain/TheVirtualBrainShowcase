@@ -5,13 +5,12 @@ import numpy
 def get_default_conn():
     
     conn = connectivity.Connectivity(load_default=True)
-
     return conn
 
 
 def get_paupau_conn():
+    
     conn = connectivity.Connectivity.from_file("paupau.zip")
-
     return conn
     
 
@@ -35,18 +34,39 @@ def get_1_region_conn():
 
 
 def conn_info(conn):
-    print('================= Connection info ===================')
-    print('Regions:    %s'%conn.region_labels)
-    print('Weights:    %s'%conn.weights)
-    print('Undirected: %s'%conn.undirected)
-    print('Centres:    %s'%conn.centres)
-    print('=====================================================')
+    print('+++++++++++++++++ Connection info +++++++++++++++++++')
+    print('+ Regions:    %s'%conn.region_labels)
+    print('+ Weights:    %s'%conn.weights)
+    print('+ Undirected: %s'%conn.undirected)
+    print('+ Centres:    %s'%conn.centres)
+    print('+++++++++++++++++++++++++++++++++++++++++++++++++++++')
+
+
+def model_info(model):
+    print('++++++++++++++++= Model info +++++++++++++++++++')
+    #print(dir(model))
+    print('+ State vars:       %s'%model.state_variables)
+    print('+ Vars of interest: %s'%model.variables_of_interest)
+    print('+ Traits:           ')
+    for t in model.trait:
+        print('+   %s = %s'%(t,model.trait[t]))
+    print('+++++++++++++++++++++++++++++++++++++++++++++++++++++')
     
     
 def data_info(data):
-    print('=================== Data info =======================')
-    print('Data %s, shape: %s, %s: %s -> %s'%(type(data), data.shape, len(data), data[0],data[-1]))
-    print('=====================================================')
+    print('+++++++++++++++++++ Data info +++++++++++++++++++++++')
+    print('+ Data %s, shape: %s, %s: %s -> %s'%(type(data), data.shape, len(data), data[0],data[-1]))
+    print('+++++++++++++++++++++++++++++++++++++++++++++++++++++')
+    
+def get_initial_conditions(vals, size=1):
+    
+    #initial_conditions0 = [[  [[0]]   ,[[0]],[[0]],[[0]],[[0]],[[0]]]]
+    #initial_conditions = numpy.array([[  [[0]]   ,[[0]],[[0]],[[0]],[[0]],[[0]]]])
+    ic = []
+    for i in vals:
+        ic.append([[i]*size])
+    iic = numpy.array([ic])
+    return iic
     
 
 def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0, initial_conditions=None):
@@ -67,6 +87,7 @@ def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0, initial
     #print sim.history
 
     # run
+    print('Running model for %s ms (dt=%sms)'%(duration,dt))
     result = sim.run()
     
     (tavg_time, tavg_data), = result
