@@ -1,0 +1,42 @@
+
+<Lems>
+
+
+    <!-- Specify which component to run -->
+    <Target component="sim1" />
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml" />
+    <Include file="Networks.xml" />
+    <Include file="Simulation.xml" />
+    
+    <Include file="kuramoto.lems.xml" />
+
+
+
+    <kuramoto id="k1" omega="0.1"/>
+
+
+    <pulseGeneratorDL id="pg0" delay="100ms" duration="100ms" amplitude="1" />
+    
+    <network id="net1">
+        <population id="Pop1" component="k1" size="1" />
+        <explicitInput target="Pop1[0]" input="pg0" destination="synapses"/>
+    </network>
+
+    <!-- End of NeuroML2 content -->
+
+
+    <Simulation id="sim1" length="0.3s" step="0.01ms" target="net1">
+
+        <Display id="d1" title="Ex   LEMS" timeScale="1s" xmin="-0.01" xmax="0.31" ymin="-2" ymax="8">
+            <Line id="theta" quantity="Pop1[0]/theta" scale="1" color="#ee40FF" timeScale="1" />
+            <Line id="sin theta" quantity="Pop1[0]/sin_theta" scale="1" color="#ee4033" timeScale="1" />
+            <Line id="I" quantity="Pop1[0]/I" scale="1" color="#aaaaFF" timeScale="1" />
+        </Display>
+    
+
+    </Simulation>
+
+
+</Lems>

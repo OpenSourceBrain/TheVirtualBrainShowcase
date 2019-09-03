@@ -1,0 +1,46 @@
+
+<Lems>
+
+
+    <!-- Specify which component to run -->
+    <Target component="sim1" />
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml" />
+    <Include file="Networks.xml" />
+    <Include file="Simulation.xml" />
+    
+    <Include file="jansenrit.lems.xml" />
+
+    <pulseGeneratorDL id="pg0" delay="200ms" duration="500ms" amplitude="2" />
+
+    <jansenrit id="jansenrit1" A="3.25" B="22.0" a="0.1" b="0.05" v0="5.52" nu_max="0.0025" r="0.56" J="135.0" a_1="1.0" a_2="0.8" a_3="0.25" a_4="0.25" mu="0.22"/>
+
+
+    <network id="net1">
+        <population id="Pop1" component="jansenrit1" size="1" />
+        <explicitInput target="Pop1[0]" input="pg0" destination="synapses"/>
+    </network>
+
+    <!-- End of NeuroML2 content -->
+
+
+    <Simulation id="sim1" length="1s" step="0.01ms" target="net1">
+
+        
+        <Display id="d0" title="Rates" timeScale="1s" xmin="-10" xmax="150" ymin="-2.5" ymax="2.5">
+            <Line id="y0" quantity="Pop1[0]/y0" scale="1" color="#ee40FF" timeScale="1s" />
+            <Line id="y1" quantity="Pop1[0]/y1" scale="1" color="#aaa0FF" timeScale="1s" />
+            <Line id="y2" quantity="Pop1[0]/y2" scale="1" color="#2ee221" timeScale="1s" />
+        </Display>
+    
+        <Display id="d1" title="Rates derivs" timeScale="1s" xmin="-10" xmax="150" ymin="-2.5" ymax="2.5">
+            <Line id="y3" quantity="Pop1[0]/y3" scale="1" color="#e1f221" timeScale="1s" />
+            <Line id="y4" quantity="Pop1[0]/y4" scale="1" color="#ff0000" timeScale="1s" />
+            <Line id="y5" quantity="Pop1[0]/y5" scale="1" color="#0000ff" timeScale="1s" />
+        </Display>
+
+    </Simulation>
+
+
+</Lems>

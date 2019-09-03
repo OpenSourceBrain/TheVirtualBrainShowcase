@@ -1,0 +1,38 @@
+
+<Lems>
+
+
+    <!-- Specify which component to run -->
+    <Target component="sim1" />
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml" />
+    <Include file="Networks.xml" />
+    <Include file="Simulation.xml" />
+    
+    <Include file="linear.lems.xml" />
+
+    <pulseGeneratorDL id="pg0" delay="200ms" duration="500ms" amplitude="0.1" />
+
+    <linear id="linear1" lam="-1"/>
+
+
+    <network id="net1">
+        <population id="Pop1" component="linear1" size="1" />
+        <explicitInput target="Pop1[0]" input="pg0" destination="synapses"/>
+    </network>
+
+    <!-- End of NeuroML2 content -->
+
+
+    <Simulation id="sim1" length="1s" step="0.01ms" target="net1">
+
+        
+        <Display id="d0" title="Example" timeScale="1s" xmin="-10" xmax="150" ymin="-2.5" ymax="2.5">
+            <Line id="x" quantity="Pop1[0]/x" scale="1" color="#ee40FF" timeScale="1s" />
+        </Display>
+
+    </Simulation>
+
+
+</Lems>

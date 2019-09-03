@@ -1,0 +1,50 @@
+
+<Lems>
+
+
+    <!-- Specify which component to run -->
+    <Target component="sim1" />
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml" />
+    <Include file="Networks.xml" />
+    <Include file="Simulation.xml" />
+    
+    <Include file="g2do.lems.xml" />
+
+
+    <pulseGeneratorDL id="pg0" delay="150ms" duration="20ms" amplitude=".1" />
+    <pulseGeneratorDL id="pg1" delay="250ms" duration="20ms" amplitude=".2" />
+    <pulseGeneratorDL id="pg2" delay="350ms" duration="20ms" amplitude="-.1" />
+
+    <!--<g2do id="g2do1" tau="1.0" I="0.0" a="0.0" b="-10.0" c="0.0" d="9.0" e="3.0" f="1.0" g="0.0" alpha="1.0" beta="1.0" gamma="1.0"/>-->
+    <g2do id="g2do1" tau="1.0" I=".0" a="-2" b="-10.0" c="0.0" d="0.02" e="3.0" f="1.0" g="0.0" alpha="1.0" beta="1.0" gamma="1.0"/>
+
+
+    <network id="net1">
+        <population id="Pop1" component="g2do1" size="3" />
+        <explicitInput target="Pop1[0]" input="pg0" destination="synapses"/>
+        <explicitInput target="Pop1[1]" input="pg1" destination="synapses"/>
+        <explicitInput target="Pop1[2]" input="pg2" destination="synapses"/>
+    </network>
+
+    <!-- End of NeuroML2 content -->
+
+
+    <Simulation id="sim1" length="1s" step="0.01ms" target="net1">
+
+        <Display id="d1" title="Ex   LEMS" timeScale="1s" xmin="-20" xmax="1020" ymin="-2.5" ymax="2.5">
+            <Line id="V0" quantity="Pop1[0]/V" scale="1" color="#ee40FF" timeScale="1ms" />
+            <Line id="V1" quantity="Pop1[1]/V" scale="1" color="#eaaaFF" timeScale="1ms" />
+            <Line id="V2" quantity="Pop1[2]/V" scale="1" color="#eeffFF" timeScale="1ms" />
+<!--            <Line id="W" quantity="Pop1[0]/W" scale="1" color="#aaa0FF" timeScale="1ms" />-->
+        </Display>
+
+        <OutputFile id="of1" fileName="results_g2do.dat">
+            <OutputColumn id="o0" quantity="Pop1[0]/V"/>
+        </OutputFile>
+
+    </Simulation>
+
+
+</Lems>

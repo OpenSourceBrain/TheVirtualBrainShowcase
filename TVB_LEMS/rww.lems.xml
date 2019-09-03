@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<Lems xmlns="http://www.neuroml.org/lems/0.7.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/lems/0.7.3 https://raw.githubusercontent.com/LEMS/LEMS/development/Schemas/LEMS/LEMS_v0.7.3.xsd">
+  <Dimension name="time" t="1"/>
+  <ComponentType extends="baseCellMembPot" name="rww">
+    <Parameter dimension="none" name="a"/>
+    <Parameter dimension="none" name="b"/>
+    <Parameter dimension="none" name="w"/>
+    <Parameter dimension="none" name="g"/>
+    <Parameter dimension="none" name="J"/>
+    <Parameter dimension="none" name="ts"/>
+    <Parameter dimension="none" name="io"/>
+    <Parameter dimension="none" name="d"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
+    <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Attachments name="synapses" type="basePointCurrentDL"/>
+    <Exposure dimension="none" name="c"/>
+    <Exposure dimension="none" name="S"/>
+    <Dynamics>
+      <StateVariable dimension="none" exposure="S" name="S"/>
+      <StateVariable dimension="voltage" exposure="v" name="v"/>
+      <DerivedVariable name="x" value="w * J * S + io + J * c"/>
+      <DerivedVariable dimension="none" exposure="c" name="c" reduce="add" select="synapses[*]/I"/>
+      <DerivedVariable exposure="S" name="S" value="S"/>
+      <DerivedVariable name="h" value="(a * x - b) / (1 - exp(-d*(a*x - b)))"/>
+      <TimeDerivative value="(- (S / ts) + (1 - S) * h * g)/MSEC" variable="S"/>
+      <OnCondition test="v .gt. 0">
+        <EventOut port="spike"/>
+      </OnCondition>
+    </Dynamics>
+  </ComponentType>
+</Lems>
