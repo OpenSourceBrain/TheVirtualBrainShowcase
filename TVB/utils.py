@@ -78,7 +78,9 @@ def run_model(model, connectivity, duration, dt=0.01, coupling_linear=0, initial
     plt.figure()
 
     for i in range(len(tavg_data[0][0])):
-        plt.plot(tavg_time, tavg_data[:, 0, i, 0], label = 'R%i'%i, alpha=0.4)
+        for j, var in enumerate(model.variables_of_interest):
+            print('Adding plot for region %i, variable %i %s'%(i, j, var))
+            plt.plot(tavg_time, tavg_data[:, j, i, 0], label = 'R%i_%s'%(i,var), alpha=0.4)
 
     plt.grid(True)
     plt.legend()
