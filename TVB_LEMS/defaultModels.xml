@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<Lems xmlns="http://www.neuroml.org/lems/0.7.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/lems/0.7.3 https://raw.githubusercontent.com/LEMS/LEMS/development/Schemas/LEMS/LEMS_v0.7.3.xsd">
+  
+    
+    
+    <jansenrit id="jansenritDefault" A="3.25" B="22.0" a="0.1" b="0.05" v0="5.52" nu_max="0.0025" r="0.56" J="135.0" a_1="1.0" a_2="0.8" a_3="0.25" a_4="0.25" mu="0.22"/>
+    
+</Lems>

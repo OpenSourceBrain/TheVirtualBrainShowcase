@@ -1,0 +1,36 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta5.xsd" id="paupau">
+    <notes>Network from TVB: ??</notes>
+    <include href="../TVB_LEMS/defaultModels.xml"/>
+    <include href="../TVB_LEMS/jansenrit.lems.xml"/>
+    <network id="paupau">
+        <notes>Network from TVB: ??</notes>
+        <population id="lA1" component="jansenritDefault" size="1" type="populationList">
+            <property tag="color" value="0.323873461356 0.529930268093 0.126012760848"/>
+            <property tag="radius" value="5000"/>
+            <instance id="0">
+                <location x="-37354.77100000000064" y="-18847.02100000000064" z="13451.057000000000698"/>
+            </instance>
+        </population>
+        <population id="lA2" component="jansenritDefault" size="1" type="populationList">
+            <property tag="color" value="0.623402727504 0.845946180425 0.906100397794"/>
+            <property tag="radius" value="5000"/>
+            <instance id="0">
+                <location x="-48458.043000000005122" y="-28355.028999999998632" z="14753.367000000000189"/>
+            </instance>
+        </population>
+        <population id="rA1" component="jansenritDefault" size="1" type="populationList">
+            <property tag="color" value="0.177017920832 0.443831831991 0.36101932862"/>
+            <property tag="radius" value="5000"/>
+            <instance id="0">
+                <location x="37354.77100000000064" y="-18847.02100000000064" z="13451.057000000000698"/>
+            </instance>
+        </population>
+        <population id="rA2" component="jansenritDefault" size="1" type="populationList">
+            <property tag="color" value="0.480995047361 0.612335748683 0.504441940113"/>
+            <property tag="radius" value="5000"/>
+            <instance id="0">
+                <location x="48458.043000000005122" y="-28355.028999999998632" z="14753.367000000000189"/>
+            </instance>
+        </population>
+    </network>
+</neuroml>
