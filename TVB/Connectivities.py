@@ -2,37 +2,25 @@ from tvb.simulator.lab import *
 from matplotlib import pyplot as plt
 import numpy
 
-def conn_info(conn):
-    print('====================================')
-    print(conn.region_labels)
-    print(conn.weights)
-    print(conn.undirected)
-    print(conn.centres)
-    print('====================================')
+from utils import *
 
 print('Loading some connectivities')
 
-conn = connectivity.Connectivity(load_default=True)
-conn = connectivity.Connectivity()
+conns = {'paupau':get_paupau_conn(), '2regions':get_2_region_conn(weight_between=2), '3regions':get_3_region_conn()}
 
-print(dir(conn))
+conns['connectivity_66'] = connectivity.Connectivity.from_file('connectivity_66.zip')
 
-conn.region_labels = numpy.array(['p1', 'p2'])
-conn.weights = numpy.array([[1,1],[0,0]])
-conn.centres = numpy.array([[0,0,0],[5,5,5]])
+for conn_id in conns:
 
-conn_info(conn)
+    conn = conns[conn_id]
+    conn.configure()
 
-#conn = connectivity.Connectivity.from_file("paupau.zip")
-
-conn_info(conn)
-
-conn.configure()
-
-conn_info(conn)
-
-
-plot_connectivity(connectivity = conn)
+    conn_info(conn, conn_id)
+    
+    plot_connectivity(connectivity = conn, plot_tracts=False)
+    
+    fig = plt.gcf()
+    fig.canvas.set_window_title(conn_id)
 
 plt.show()
 

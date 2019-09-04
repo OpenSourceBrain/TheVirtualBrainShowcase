@@ -3,3 +3,4 @@
 /TVB_LEMS/x86_64
 /TVB_LEMS/*.dat
 *_nrn.py
+*.gv*

@@ -22,6 +22,16 @@ def get_2_region_conn(weight_between=0):
 
     return conn
 
+def get_3_region_conn():
+    conn = connectivity.Connectivity()
+    conn.region_labels = numpy.array(['R0', 'R1', 'R1'])
+    
+    conn.weights = numpy.array([[0,1,0.5],[0,0,0],[0,0,0]])
+    
+    conn.centres = numpy.array([[0,0,0],[10,0,0],[30,0,0]])
+
+    return conn
+
 
 def get_1_region_conn():
     conn = connectivity.Connectivity()
@@ -33,8 +43,8 @@ def get_1_region_conn():
 
 
 
-def conn_info(conn):
-    print('+++++++++++++++++ Connection info +++++++++++++++++++')
+def conn_info(conn, name=None):
+    print('+++++++++++++++++ Connection info%s +++++++++++++++++++'%('' if name==None else ': %s'%name))
     print('+ Regions:    %s'%conn.region_labels)
     print('+ Weights:    %s'%conn.weights)
     print('+ Undirected: %s'%conn.undirected)
