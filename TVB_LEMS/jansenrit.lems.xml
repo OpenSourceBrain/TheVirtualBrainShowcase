@@ -3,48 +3,48 @@
   <Dimension name="time" t="1"/>
   <ComponentType extends="baseCellMembPot" name="jansenrit">
     <Parameter dimension="none" name="A"/>
-    <Parameter dimension="none" name="a"/>
-    <Parameter dimension="none" name="r"/>
     <Parameter dimension="none" name="B"/>
-    <Parameter dimension="none" name="a_3"/>
-    <Parameter dimension="none" name="a_2"/>
-    <Parameter dimension="none" name="a_1"/>
-    <Parameter dimension="none" name="J"/>
-    <Parameter dimension="none" name="v0"/>
-    <Parameter dimension="none" name="mu"/>
-    <Parameter dimension="none" name="a_4"/>
+    <Parameter dimension="none" name="a"/>
     <Parameter dimension="none" name="b"/>
+    <Parameter dimension="none" name="v0"/>
     <Parameter dimension="none" name="nu_max"/>
-    <Constant dimension="none" name="PI" value="3.14159265359"/>
+    <Parameter dimension="none" name="r"/>
+    <Parameter dimension="none" name="J"/>
+    <Parameter dimension="none" name="a_1"/>
+    <Parameter dimension="none" name="a_2"/>
+    <Parameter dimension="none" name="a_3"/>
+    <Parameter dimension="none" name="a_4"/>
+    <Parameter dimension="none" name="mu"/>
     <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
     <Exposure dimension="none" name="lrc"/>
     <Exposure dimension="none" name="y0_min_y1"/>
-    <Exposure dimension="none" name="y1"/>
     <Exposure dimension="none" name="y0"/>
-    <Exposure dimension="none" name="y3"/>
+    <Exposure dimension="none" name="y1"/>
     <Exposure dimension="none" name="y2"/>
-    <Exposure dimension="none" name="y5"/>
+    <Exposure dimension="none" name="y3"/>
     <Exposure dimension="none" name="y4"/>
+    <Exposure dimension="none" name="y5"/>
     <Dynamics>
       <StateVariable dimension="voltage" exposure="v" name="v"/>
-      <StateVariable dimension="none" exposure="y1" name="y1"/>
       <StateVariable dimension="none" exposure="y0" name="y0"/>
-      <StateVariable dimension="none" exposure="y3" name="y3"/>
+      <StateVariable dimension="none" exposure="y1" name="y1"/>
       <StateVariable dimension="none" exposure="y2" name="y2"/>
-      <StateVariable dimension="none" exposure="y5" name="y5"/>
+      <StateVariable dimension="none" exposure="y3" name="y3"/>
       <StateVariable dimension="none" exposure="y4" name="y4"/>
-      <DerivedVariable name="sigm_y0_1" value="2 * nu_max / (1 + exp(r * (v0 - (a_1 * J * y0))))"/>
+      <StateVariable dimension="none" exposure="y5" name="y5"/>
       <DerivedVariable dimension="none" exposure="lrc" name="lrc" reduce="add" select="synapses[*]/I"/>
       <DerivedVariable name="sigm_y1_y2" value="2 * nu_max / (1 + exp(r * (v0 - (y1 - y2))))"/>
-      <DerivedVariable exposure="y0_min_y1" name="y0_min_y1" value="y0 - y1"/>
+      <DerivedVariable name="sigm_y0_1" value="2 * nu_max / (1 + exp(r * (v0 - (a_1 * J * y0))))"/>
       <DerivedVariable name="sigm_y0_3" value="2 * nu_max / (1 + exp(r * (v0 - (a_3 * J * y0))))"/>
-      <TimeDerivative value="(y4)/MSEC" variable="y1"/>
+      <DerivedVariable exposure="y0_min_y1" name="y0_min_y1" value="y0 - y1"/>
       <TimeDerivative value="(y3)/MSEC" variable="y0"/>
-      <TimeDerivative value="(A * a * sigm_y1_y2 - 2 * a * y3 - a^2 * y0)/MSEC" variable="y3"/>
+      <TimeDerivative value="(y4)/MSEC" variable="y1"/>
       <TimeDerivative value="(y5)/MSEC" variable="y2"/>
-      <TimeDerivative value="(B * b * (a_4 * J * sigm_y0_3) - 2 * b * y5 - b^2 * y2)/MSEC" variable="y5"/>
+      <TimeDerivative value="(A * a * sigm_y1_y2 - 2 * a * y3 - a^2 * y0)/MSEC" variable="y3"/>
       <TimeDerivative value="(A * a * (mu + a_2 * J * sigm_y0_1 + lrc) - 2 * a * y4 - a^2 * y1)/MSEC" variable="y4"/>
+      <TimeDerivative value="(B * b * (a_4 * J * sigm_y0_3) - 2 * b * y5 - b^2 * y2)/MSEC" variable="y5"/>
       <OnCondition test="v .gt. 0">
         <EventOut port="spike"/>
       </OnCondition>

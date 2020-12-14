@@ -2,33 +2,33 @@
 <Lems xmlns="http://www.neuroml.org/lems/0.7.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/lems/0.7.3 https://raw.githubusercontent.com/LEMS/LEMS/development/Schemas/LEMS/LEMS_v0.7.3.xsd">
   <Dimension name="time" t="1"/>
   <ComponentType extends="baseCellMembPot" name="g2do">
-    <Parameter dimension="none" name="a"/>
     <Parameter dimension="none" name="tau"/>
-    <Parameter dimension="none" name="c"/>
-    <Parameter dimension="none" name="b"/>
-    <Parameter dimension="none" name="e"/>
-    <Parameter dimension="none" name="d"/>
-    <Parameter dimension="none" name="g"/>
-    <Parameter dimension="none" name="f"/>
     <Parameter dimension="none" name="I"/>
-    <Parameter dimension="none" name="beta"/>
+    <Parameter dimension="none" name="a"/>
+    <Parameter dimension="none" name="b"/>
+    <Parameter dimension="none" name="c"/>
+    <Parameter dimension="none" name="d"/>
+    <Parameter dimension="none" name="e"/>
+    <Parameter dimension="none" name="f"/>
+    <Parameter dimension="none" name="g"/>
     <Parameter dimension="none" name="alpha"/>
+    <Parameter dimension="none" name="beta"/>
     <Parameter dimension="none" name="gamma"/>
-    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
     <Exposure dimension="none" name="c_0"/>
     <Exposure dimension="none" name="W"/>
     <Exposure dimension="none" name="V"/>
     <Dynamics>
+      <StateVariable dimension="voltage" exposure="v" name="v"/>
       <StateVariable dimension="none" exposure="V" name="V"/>
       <StateVariable dimension="none" exposure="W" name="W"/>
-      <StateVariable dimension="voltage" exposure="v" name="v"/>
       <DerivedVariable dimension="none" exposure="c_0" name="c_0" reduce="add" select="synapses[*]/I"/>
       <DerivedVariable exposure="W" name="W" value="W"/>
       <DerivedVariable exposure="V" name="V" value="V"/>
-      <TimeDerivative value="(d * (a + b*V + c*V^2 - beta*W) / tau)/MSEC" variable="W"/>
       <TimeDerivative value="(d * tau * (alpha*W - f*V^3 + e*V^2 + g*V + gamma*I + gamma*c_0))/MSEC" variable="V"/>
+      <TimeDerivative value="(d * (a + b*V + c*V^2 - beta*W) / tau)/MSEC" variable="W"/>
       <OnCondition test="v .gt. 0">
         <EventOut port="spike"/>
       </OnCondition>

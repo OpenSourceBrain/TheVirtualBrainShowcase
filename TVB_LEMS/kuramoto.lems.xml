@@ -3,15 +3,15 @@
   <Dimension name="time" t="1"/>
   <ComponentType extends="baseCellMembPot" name="kuramoto">
     <Parameter dimension="none" name="omega"/>
-    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
     <Exposure dimension="none" name="I"/>
-    <Exposure dimension="none" name="theta"/>
     <Exposure dimension="none" name="sin_theta"/>
+    <Exposure dimension="none" name="theta"/>
     <Dynamics>
-      <StateVariable dimension="none" exposure="theta" name="theta"/>
       <StateVariable dimension="voltage" exposure="v" name="v"/>
+      <StateVariable dimension="none" exposure="theta" name="theta"/>
       <DerivedVariable dimension="none" exposure="I" name="I" reduce="add" select="synapses[*]/I"/>
       <DerivedVariable exposure="sin_theta" name="sin_theta" value="sin(theta)"/>
       <TimeDerivative value="(omega + I)/MSEC" variable="theta"/>

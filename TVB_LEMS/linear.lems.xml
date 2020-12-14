@@ -3,16 +3,16 @@
   <Dimension name="time" t="1"/>
   <ComponentType extends="baseCellMembPot" name="linear">
     <Parameter dimension="none" name="lam"/>
-    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
-    <Exposure dimension="none" name="x"/>
     <Exposure dimension="none" name="c"/>
+    <Exposure dimension="none" name="x"/>
     <Dynamics>
-      <StateVariable dimension="none" exposure="x" name="x"/>
       <StateVariable dimension="voltage" exposure="v" name="v"/>
-      <DerivedVariable exposure="x" name="x" value="x"/>
+      <StateVariable dimension="none" exposure="x" name="x"/>
       <DerivedVariable dimension="none" exposure="c" name="c" reduce="add" select="synapses[*]/I"/>
+      <DerivedVariable exposure="x" name="x" value="x"/>
       <TimeDerivative value="(lam * x + c)/MSEC" variable="x"/>
       <OnCondition test="v .gt. 0">
         <EventOut port="spike"/>

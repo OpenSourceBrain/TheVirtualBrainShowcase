@@ -4,24 +4,24 @@
   <ComponentType extends="baseCellMembPot" name="rww">
     <Parameter dimension="none" name="a"/>
     <Parameter dimension="none" name="b"/>
-    <Parameter dimension="none" name="w"/>
-    <Parameter dimension="none" name="g"/>
-    <Parameter dimension="none" name="J"/>
-    <Parameter dimension="none" name="ts"/>
-    <Parameter dimension="none" name="io"/>
     <Parameter dimension="none" name="d"/>
-    <Constant dimension="none" name="PI" value="3.14159265359"/>
+    <Parameter dimension="none" name="g"/>
+    <Parameter dimension="none" name="ts"/>
+    <Parameter dimension="none" name="J"/>
+    <Parameter dimension="none" name="w"/>
+    <Parameter dimension="none" name="io"/>
     <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
     <Exposure dimension="none" name="c"/>
     <Exposure dimension="none" name="S"/>
     <Dynamics>
-      <StateVariable dimension="none" exposure="S" name="S"/>
       <StateVariable dimension="voltage" exposure="v" name="v"/>
-      <DerivedVariable name="x" value="w * J * S + io + J * c"/>
+      <StateVariable dimension="none" exposure="S" name="S"/>
       <DerivedVariable dimension="none" exposure="c" name="c" reduce="add" select="synapses[*]/I"/>
-      <DerivedVariable exposure="S" name="S" value="S"/>
+      <DerivedVariable name="x" value="w * J * S + io + J * c"/>
       <DerivedVariable name="h" value="(a * x - b) / (1 - exp(-d*(a*x - b)))"/>
+      <DerivedVariable exposure="S" name="S" value="S"/>
       <TimeDerivative value="(- (S / ts) + (1 - S) * h * g)/MSEC" variable="S"/>
       <OnCondition test="v .gt. 0">
         <EventOut port="spike"/>

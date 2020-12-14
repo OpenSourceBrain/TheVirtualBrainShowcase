@@ -2,24 +2,24 @@
 <Lems xmlns="http://www.neuroml.org/lems/0.7.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/lems/0.7.3 https://raw.githubusercontent.com/LEMS/LEMS/development/Schemas/LEMS/LEMS_v0.7.3.xsd">
   <Dimension name="time" t="1"/>
   <ComponentType extends="baseCellMembPot" name="test">
-    <Parameter dimension="none" name="a"/>
-    <Parameter dimension="none" name="c"/>
-    <Parameter dimension="none" name="b"/>
-    <Parameter dimension="none" name="e"/>
     <Parameter dimension="none" name="d"/>
-    <Constant dimension="none" name="PI" value="3.14159265359"/>
+    <Parameter dimension="none" name="e"/>
+    <Parameter dimension="none" name="a"/>
+    <Parameter dimension="none" name="b"/>
+    <Parameter dimension="none" name="c"/>
     <Constant dimension="time" name="MSEC" value="1ms"/>
+    <Constant dimension="none" name="PI" value="3.14159265359"/>
     <Attachments name="synapses" type="basePointCurrentDL"/>
     <Exposure dimension="none" name="i1"/>
     <Exposure dimension="none" name="y1"/>
     <Exposure dimension="none" name="y2"/>
     <Dynamics>
+      <StateVariable dimension="voltage" exposure="v" name="v"/>
       <StateVariable dimension="none" exposure="y1" name="y1"/>
       <StateVariable dimension="none" exposure="y2" name="y2"/>
-      <StateVariable dimension="voltage" exposure="v" name="v"/>
       <DerivedVariable dimension="none" exposure="i1" name="i1" reduce="add" select="synapses[*]/I"/>
-      <DerivedVariable exposure="y1" name="y1" value="y1"/>
       <DerivedVariable name="y1_3" value="y1 * y1 * y1"/>
+      <DerivedVariable exposure="y1" name="y1" value="y1"/>
       <TimeDerivative value="((y1 - y1_3/3 + y2 + e)*b)/MSEC" variable="y1"/>
       <TimeDerivative value="((a - y1 + i1 + d)/b)/MSEC" variable="y2"/>
       <OnCondition test="v .gt. 0">
