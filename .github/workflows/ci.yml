@@ -31,3 +31,8 @@ jobs:
     - name: OMV final version info
       run: |
         omv list -V # list installed engines
+    - name: Install TVB
+      run: |
+        pip install tvb-library
+        pip list
+    
