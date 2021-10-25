@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         python-version: [ 3.7, 3.9 ]
-        engine: [ jNeuroML ]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,9 +24,9 @@ jobs:
       run: |
         pip install git+https://github.com/OpenSourceBrain/osb-model-validation
         pip install scipy sympy matplotlib cython pandas tables
-    - name: Run OMV tests on engine ${{ matrix.engine }}
+    - name: Run OMV tests on all engines
       run: |
-        omv all -V --engine=${{ matrix.engine }}
+        omv all 
     - name: OMV final version info
       run: |
         omv list -V # list installed engines
