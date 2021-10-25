@@ -1,14 +1,26 @@
-from tvb.simulator.lab import models
-import numpy as np
+# Based on https://github.com/the-virtual-brain/tvb-root/blob/master/tvb_documentation/demos/simulate_reduced_wong_wang.ipynb
+from tvb.simulator.lab import *
+
+import numpy
 from matplotlib import pyplot as plt
 
 print('Creating RWW')
+'''
+rww = models.ReducedWongWang(a=numpy.array([0.27]), w=numpy.array([1.0]), I_o=numpy.array([0.3]))
+S = linspace(0, 1, 50).reshape((1, -1, 1))
+C = S * 0.0
+dS = rww.dfun(S, C)
 
-rww = models.ReducedWongWang(a=0.27, w=1.0, I_o=0.3)
-print('RWW: %s'%rww)
+figure()
+plot(S.flat, dS.flat)
+'''
+
+rww = models.ReducedWongWang(a=numpy.array([0.27]), w=numpy.array([1.0]), I_o=numpy.array([0.3]))
+
+print('RWW created: %s'%rww)
 
 
-S = np.linspace(0, 1, 50).reshape((1, -1, 1))
+S = numpy.linspace(0, 1, 50).reshape((1, -1, 1))
 C = S * 0.0
 dS = rww.dfun(S, C)
 
