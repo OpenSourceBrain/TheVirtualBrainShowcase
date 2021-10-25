@@ -26,7 +26,7 @@ jobs:
         pip install scipy sympy matplotlib cython pandas tables
     - name: Run OMV tests on all engines
       run: |
-        omv all 
+        omv all
     - name: OMV final version info
       run: |
         omv list -V # list installed engines
@@ -34,4 +34,5 @@ jobs:
       run: |
         pip install tvb-library
         pip list
-    
+        cd TVB
+        python RWW.py -nogui
