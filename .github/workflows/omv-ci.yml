@@ -36,3 +36,4 @@ jobs:
         pip list
         cd TVB
         python RWW.py -nogui
+        python KuramotoRun.py -nogui
