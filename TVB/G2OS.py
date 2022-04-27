@@ -13,7 +13,6 @@ conn = get_1_region_conn()
 
 initial_conditions = get_initial_conditions( [0,0] , len(conn.region_labels))
 
-run_model(model, conn, 1000, coupling_linear=0.0, initial_conditions=initial_conditions)
+run_model(model, conn, 1000, initial_conditions=initial_conditions)
 
 plt.show()
-
