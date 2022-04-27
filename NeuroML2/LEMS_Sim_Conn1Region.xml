@@ -1,0 +1,34 @@
+<Lems>
+    
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v0.6.1 (libNeuroML v0.3.2)
+
+     -->
+    
+    <!-- Specify which component to run -->
+    <Target component="Sim_Conn1Region" reportFile="report.Sim_Conn1Region.txt"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+    
+    <Include file="Conn1Region.net.nml"/>
+    <Include file="../TVB_LEMS/defaultModels.xml"/>
+    <Include file="../TVB_LEMS/jansenrit.lems.xml"/>
+   
+    <Simulation id="Sim_Conn1Region" length="1000ms" step="0.1ms" target="Conn1Region" seed="6789">  <!-- Note seed: ensures same random numbers used every run -->
+        
+        <Display id="Vars_R0" title="Plots of Vars_R0" timeScale="1ms" xmin="-100.0" xmax="1100.0" ymin="-1" ymax="1">
+            <Line id="R0_0_jansenritDefault_y0" quantity="R0/0/jansenritDefault/y0" scale="1" color="#d54f33" timeScale="1ms"/>
+            <Line id="R0_0_jansenritDefault_y1" quantity="R0/0/jansenritDefault/y1" scale="1" color="#0534e4" timeScale="1ms"/>
+            <Line id="R0_0_jansenritDefault_y2" quantity="R0/0/jansenritDefault/y2" scale="1" color="#98e752" timeScale="1ms"/>
+            <Line id="R0_0_jansenritDefault_y3" quantity="R0/0/jansenritDefault/y3" scale="1" color="#bca074" timeScale="1ms"/>
+            <Line id="R0_0_jansenritDefault_y4" quantity="R0/0/jansenritDefault/y4" scale="1" color="#632794" timeScale="1ms"/>
+            <Line id="R0_0_jansenritDefault_y5" quantity="R0/0/jansenritDefault/y5" scale="1" color="#8a5d88" timeScale="1ms"/>
+        </Display>
+        
+    </Simulation>
+
+</Lems>

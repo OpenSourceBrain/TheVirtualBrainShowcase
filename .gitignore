@@ -4,6 +4,4 @@
 /TVB_LEMS/*.dat
 *_nrn.py
 *.gv*
-/NeuroML2/LEMS_Sim_Conn1Region.xml
-/NeuroML2/LEMS_Sim_paupau.xml
 /NeuroML2/report.*.txt

@@ -1,0 +1,61 @@
+<Lems>
+    
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v0.6.1 (libNeuroML v0.3.2)
+
+     -->
+    
+    <!-- Specify which component to run -->
+    <Target component="Sim_paupau" reportFile="report.Sim_paupau.txt"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+    
+    <Include file="paupau.net.nml"/>
+    <Include file="../TVB_LEMS/defaultModels.xml"/>
+    <Include file="../TVB_LEMS/jansenrit.lems.xml"/>
+   
+    <Simulation id="Sim_paupau" length="1000ms" step="0.1ms" target="paupau" seed="6789">  <!-- Note seed: ensures same random numbers used every run -->
+        
+        <Display id="Vars_lA1" title="Plots of Vars_lA1" timeScale="1ms" xmin="-100.0" xmax="1100.0" ymin="-1" ymax="1">
+            <Line id="lA1_0_jansenritDefault_y0" quantity="lA1/0/jansenritDefault/y0" scale="1" color="#d54f33" timeScale="1ms"/>
+            <Line id="lA1_0_jansenritDefault_y1" quantity="lA1/0/jansenritDefault/y1" scale="1" color="#0534e4" timeScale="1ms"/>
+            <Line id="lA1_0_jansenritDefault_y2" quantity="lA1/0/jansenritDefault/y2" scale="1" color="#98e752" timeScale="1ms"/>
+            <Line id="lA1_0_jansenritDefault_y3" quantity="lA1/0/jansenritDefault/y3" scale="1" color="#bca074" timeScale="1ms"/>
+            <Line id="lA1_0_jansenritDefault_y4" quantity="lA1/0/jansenritDefault/y4" scale="1" color="#632794" timeScale="1ms"/>
+            <Line id="lA1_0_jansenritDefault_y5" quantity="lA1/0/jansenritDefault/y5" scale="1" color="#8a5d88" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Vars_lA2" title="Plots of Vars_lA2" timeScale="1ms" xmin="-100.0" xmax="1100.0" ymin="-1" ymax="1">
+            <Line id="lA2_0_jansenritDefault_y0" quantity="lA2/0/jansenritDefault/y0" scale="1" color="#df5954" timeScale="1ms"/>
+            <Line id="lA2_0_jansenritDefault_y1" quantity="lA2/0/jansenritDefault/y1" scale="1" color="#52c8bf" timeScale="1ms"/>
+            <Line id="lA2_0_jansenritDefault_y2" quantity="lA2/0/jansenritDefault/y2" scale="1" color="#bf0239" timeScale="1ms"/>
+            <Line id="lA2_0_jansenritDefault_y3" quantity="lA2/0/jansenritDefault/y3" scale="1" color="#3f9fe8" timeScale="1ms"/>
+            <Line id="lA2_0_jansenritDefault_y4" quantity="lA2/0/jansenritDefault/y4" scale="1" color="#dda9d2" timeScale="1ms"/>
+            <Line id="lA2_0_jansenritDefault_y5" quantity="lA2/0/jansenritDefault/y5" scale="1" color="#85ad96" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Vars_rA1" title="Plots of Vars_rA1" timeScale="1ms" xmin="-100.0" xmax="1100.0" ymin="-1" ymax="1">
+            <Line id="rA1_0_jansenritDefault_y0" quantity="rA1/0/jansenritDefault/y0" scale="1" color="#59438f" timeScale="1ms"/>
+            <Line id="rA1_0_jansenritDefault_y1" quantity="rA1/0/jansenritDefault/y1" scale="1" color="#5fa56f" timeScale="1ms"/>
+            <Line id="rA1_0_jansenritDefault_y2" quantity="rA1/0/jansenritDefault/y2" scale="1" color="#b5b5a2" timeScale="1ms"/>
+            <Line id="rA1_0_jansenritDefault_y3" quantity="rA1/0/jansenritDefault/y3" scale="1" color="#2ebe19" timeScale="1ms"/>
+            <Line id="rA1_0_jansenritDefault_y4" quantity="rA1/0/jansenritDefault/y4" scale="1" color="#d30150" timeScale="1ms"/>
+            <Line id="rA1_0_jansenritDefault_y5" quantity="rA1/0/jansenritDefault/y5" scale="1" color="#55490a" timeScale="1ms"/>
+        </Display>
+        
+        <Display id="Vars_rA2" title="Plots of Vars_rA2" timeScale="1ms" xmin="-100.0" xmax="1100.0" ymin="-1" ymax="1">
+            <Line id="rA2_0_jansenritDefault_y0" quantity="rA2/0/jansenritDefault/y0" scale="1" color="#4bd9d0" timeScale="1ms"/>
+            <Line id="rA2_0_jansenritDefault_y1" quantity="rA2/0/jansenritDefault/y1" scale="1" color="#69535e" timeScale="1ms"/>
+            <Line id="rA2_0_jansenritDefault_y2" quantity="rA2/0/jansenritDefault/y2" scale="1" color="#27dae9" timeScale="1ms"/>
+            <Line id="rA2_0_jansenritDefault_y3" quantity="rA2/0/jansenritDefault/y3" scale="1" color="#6143ed" timeScale="1ms"/>
+            <Line id="rA2_0_jansenritDefault_y4" quantity="rA2/0/jansenritDefault/y4" scale="1" color="#aee102" timeScale="1ms"/>
+            <Line id="rA2_0_jansenritDefault_y5" quantity="rA2/0/jansenritDefault/y5" scale="1" color="#a4e245" timeScale="1ms"/>
+        </Display>
+        
+    </Simulation>
+
+</Lems>
