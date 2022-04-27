@@ -44,4 +44,8 @@ jobs:
         pip install pyneuroml
         python TVBReader.py -nogui
 
+
+        cd ../TVB_LEMS
+        python genlems.py
+
         pip list
