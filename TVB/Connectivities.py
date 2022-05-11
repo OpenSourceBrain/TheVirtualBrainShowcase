@@ -16,11 +16,12 @@ for conn_id in conns:
     conn.configure()
 
     conn_info(conn, conn_id)
-    
+
     plot_connectivity(connectivity = conn, plot_tracts=False)
-    
+
     fig = plt.gcf()
     fig.canvas.set_window_title(conn_id)
 
-plt.show()
-
+import sys
+if not '-nogui' in sys.argv:
+    plt.show()

@@ -31,6 +31,8 @@ def get_3_region_conn():
 
     conn.weights = numpy.array([[0,1,0.5],[0,0,0],[0,0,0]])
 
+    conn.tract_lengths = numpy.array([[0,0,0],[0,0,0],[0,0,0]])
+
     conn.centres = numpy.array([[0,0,0],[10,0,0],[30,0,0]])
 
     return conn

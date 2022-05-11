@@ -47,6 +47,7 @@ jobs:
         python KuramotoRun.py -nogui
         python G2OS.py -nogui
         python JR.py -nogui
+        python Connectivities.py -nogui
 
         python TVBReader.py -nogui
 
