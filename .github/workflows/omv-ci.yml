@@ -20,32 +20,38 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version:  ${{ matrix.python-version }}
+
     - name: Install OMV
       run: |
         pip install git+https://github.com/OpenSourceBrain/osb-model-validation
         pip install scipy sympy matplotlib cython pandas tables
+
     - name: Run OMV tests on all engines
       run: |
-        omv all
+        omv all -V
+
     - name: OMV final version info
       run: |
         omv list -V # list installed engines
+
     - name: Install TVB
       run: |
         pip install tvb-library
+        pip install tvb-data
+        pip install pyneuroml
 
+    - name: Test TVB native examples
         cd TVB
         python RWW.py -nogui
         python KuramotoRun.py -nogui
         python G2OS.py -nogui
         python JR.py -nogui
 
-        pip install tvb-data
-        pip install pyneuroml
         python TVBReader.py -nogui
-
 
         cd ../TVB_LEMS
         python genlems.py
 
+    - name: Final version info
+      run: |
         pip list
