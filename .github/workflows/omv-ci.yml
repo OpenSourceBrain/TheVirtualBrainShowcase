@@ -41,6 +41,7 @@ jobs:
         pip install pyneuroml
 
     - name: Test TVB native examples
+      run: |
         cd TVB
         python RWW.py -nogui
         python KuramotoRun.py -nogui
