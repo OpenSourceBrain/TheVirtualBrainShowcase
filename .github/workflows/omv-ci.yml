@@ -52,8 +52,11 @@ jobs:
 
         python TVBReader.py -nogui
 
-        cd ../TVB_LEMS
+    - name: Test LEMS generated TVB examples
+      run: |
+        cd TVB_LEMS
         python genlems.py
+        ./test_all.sh
 
     - name: Final version info
       run: |
