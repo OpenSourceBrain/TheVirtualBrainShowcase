@@ -5,28 +5,28 @@
     <network id="paupau">
         <notes>Network from TVB: ??</notes>
         <population id="lA1" component="jansenritDefault" size="1" type="populationList">
-            <property tag="color" value="0.8988286436869534 0.9351415118096645 0.4302417928913901"/>
+            <property tag="color" value="0.9664535356921388 0.4407325991753527 0.007491470058587191"/>
             <property tag="radius" value="5000"/>
             <instance id="0">
                 <location x="-37354.77100000000064" y="-18847.02100000000064" z="13451.057000000000698"/>
             </instance>
         </population>
         <population id="lA2" component="jansenritDefault" size="1" type="populationList">
-            <property tag="color" value="0.9717665790071116 0.9061869428254609 0.8904606179136738"/>
+            <property tag="color" value="0.9109759624491242 0.939268997363764 0.5822275730589491"/>
             <property tag="radius" value="5000"/>
             <instance id="0">
                 <location x="-48458.043000000005122" y="-28355.028999999998632" z="14753.367000000000189"/>
             </instance>
         </population>
         <population id="rA1" component="jansenritDefault" size="1" type="populationList">
-            <property tag="color" value="0.39995084704118455 0.9752107449676435 0.7147678799738523"/>
+            <property tag="color" value="0.6715634814879851 0.08393822683708396 0.7664809327917963"/>
             <property tag="radius" value="5000"/>
             <instance id="0">
                 <location x="37354.77100000000064" y="-18847.02100000000064" z="13451.057000000000698"/>
             </instance>
         </population>
         <population id="rA2" component="jansenritDefault" size="1" type="populationList">
-            <property tag="color" value="0.9542170198756558 0.2767452115716774 0.09998136645282407"/>
+            <property tag="color" value="0.23680977536311776 0.030814021726609964 0.7887727172362835"/>
             <property tag="radius" value="5000"/>
             <instance id="0">
                 <location x="48458.043000000005122" y="-28355.028999999998632" z="14753.367000000000189"/>

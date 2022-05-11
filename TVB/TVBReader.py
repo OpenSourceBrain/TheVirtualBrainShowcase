@@ -8,6 +8,8 @@ from neuromllite import NetworkReader
 from neuromllite.utils import print_v
 import random
 
+random.seed(1234)
+
 class TVBReader(NetworkReader):
 
     component_objects = {} # Store cell ids vs objects, e.g. NeuroML2 based object
