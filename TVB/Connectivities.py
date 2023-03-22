@@ -2,7 +2,7 @@ from tvb.simulator.lab import *
 from matplotlib import pyplot as plt
 import numpy
 
-from utils import *
+from utils import conn_info, get_paupau_conn, get_2_region_conn, get_3_region_conn
 
 print('Loading some connectivities')
 
@@ -19,9 +19,9 @@ for conn_id in conns:
 
     plot_connectivity(connectivity = conn, plot_tracts=False)
 
-    fig = plt.gcf()
-    fig.canvas.set_window_title(conn_id)
 
 import sys
 if not '-nogui' in sys.argv:
+    fig = plt.gcf()
+    fig.canvas.set_window_title(conn_id)
     plt.show()
